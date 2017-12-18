@@ -1,0 +1,19 @@
+div class="row"
+  div class="two columns" id="bank-list-item"
+    - @banks.each do |bank|
+      div class="row"
+        - if @bank_id == bank[:id]
+          a href="/home/#{bank[:id]}" class="button button-primary"
+            = bank[:title]
+        - else
+          a href="/home/#{bank[:id]}" class="button"
+            = bank[:title]
+    div class="spacerline"
+    div class="row"
+      a href="/new" New Bank
+      br
+      a href="/edit/#{@bank_id}" Edit Bank
+      br
+      a href="/delete/#{@bank_id}" Delete Bank
+  div class="nine columns"
+    == yield
