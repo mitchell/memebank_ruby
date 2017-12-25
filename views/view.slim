@@ -1,6 +1,8 @@
-div class="grid"
-  div class="grid-sizer"
-  - @cards.each do |card|
-    div class="grid-item"
-      div class="bordered-item"
-        img src=card[:src]
+div class="row"
+  div class="grid"
+    div class="grid-sizer"
+    - @cards.each do |card|
+      div class="grid-item"
+        div class="bordered-item"
+          a href="/card/#{card[:id]}"
+            img src=card[:src]

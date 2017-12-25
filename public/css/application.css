@@ -13,25 +13,55 @@ body {
   .grid-sizer,
   .grid-item { width: 25%; }
   #login-container { max-width: 40%; }
+  #home-grid { margin-left: 2%; }
 }
 .bordered-item {
-  border: 2px solid #BBB;
-  border-radius: 4px;
   text-align: center;
+  padding: 1rem;
 }
-.grid-item .bordered-item { margin: 1rem; }
 .bordered-item img {
+  border-radius: 4px;
   max-width: 100%;
-  display: block;
 }  
 .spacerline {
-  border: 1px solid #BBB;
+  border: 1px solid white;
   margin-top: 10px;
   margin-bottom: 10px;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
-#logo-item { margin-left: 1rem; }
+#logo-item {
+  margin-left: 1rem;
+  color: white;
+}
 #bank-list-item { 
-  margin: 1rem;
+  padding: 1rem;
   text-align: center;
+  background-color: #BBB;
+  border-radius: 0px 0px 4px 4px;
 }
-#login-item { padding-top: 2rem; }
+#bank-list-links a {
+  color: white;
+  background-color: #555;
+  height: 22px;
+  line-height: 22px;
+  font-size: 9px;
+  margin-bottom: 0px;
+}
+#login-item {
+  text-align: center;
+  padding-top: 2rem;
+}
+#card-options {
+  text-align: center;
+  padding: 1rem;
+}
+#logo-row {
+  background-color: #33C3F0;
+  border-bottom: 2px solid #BBB;
+}
+#logo-row h4 { margin-bottom: 1rem; }
+#edit-item {
+  text-align: center;
+  padding-top: 1rem;
+}

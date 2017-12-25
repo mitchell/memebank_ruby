@@ -1,6 +1,5 @@
-div class="row" style="text-align: center"
+div class="row" id="edit-item"
   form action="/#{new_or_edit}#{bank_id_if}" method="post"
-    p Title:
-    input type="text" name="title"
+    input type="text" name="title" placeholder="title"
     br
-      input type="submit"
+      input type="submit" value="#{new_or_edit} bank"

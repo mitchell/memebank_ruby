@@ -1,5 +1,5 @@
 div class="row"
-  div class="two columns" id="bank-list-item"
+  div class="three columns" id="bank-list-item"
     - @banks.each do |bank|
       div class="row"
         - if @bank_id == bank[:id]
@@ -9,11 +9,26 @@ div class="row"
           a href="/home/#{bank[:id]}" class="button"
             = bank[:title]
     div class="spacerline"
-    div class="row"
-      a href="/new" New Bank
-      br
-      a href="/edit/#{@bank_id}" Edit Bank
-      br
-      a href="/delete/#{@bank_id}" Delete Bank
-  div class="nine columns"
+    div class="row" id="bank-list-links"
+      - case current_view
+        - when :bank
+          a href="/new" class="button" new bank
+          br
+          a href="/edit/#{@bank_id}" class="button" edit bank
+          br
+          a href="/delete/#{@bank_id}" class="button" delete bank
+          br
+          a href="/add_card/#{@bank_id}" class="button" add card
+          br
+        - when :card
+          textarea id="to_copy" rows="1" = @card[:src]
+          br
+          a href="#" id="copy_button" class="button" copy link
+          br
+          a href="/delete_card/#{@card[:id]}" class="button" delete card
+          br
+        - when :none
+      a href="/logout" class="button" log out
+
+  div class="nine columns" id="home-grid"
     == yield
