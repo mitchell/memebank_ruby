@@ -5,7 +5,7 @@ require 'json'
 # Memebank application class
 class Memebank < Sinatra::Application
   enable :sessions
-  @@api_url = 'https://api.memebank.life' # rubocop:disable Style/ClassVars
+  @@api_url = 'http://localhost:3000' # rubocop:disable Style/ClassVars
 
   private
 

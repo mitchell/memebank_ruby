@@ -40,6 +40,7 @@ body {
   background-color: #BBB;
   border-radius: 0px 0px 4px 4px;
 }
+#bank-list-links button,
 #bank-list-links a {
   color: white;
   background-color: #555;

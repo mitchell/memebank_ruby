@@ -23,7 +23,7 @@ div class="row"
         - when :card
           textarea id="to_copy" rows="1" = @card[:src]
           br
-          a href="#" id="copy_button" class="button" copy link
+          button id="copy_button" copy link
           br
           a href="/delete_card/#{@card[:id]}/#{@card[:bank_id]}" class="button" delete card
           br
