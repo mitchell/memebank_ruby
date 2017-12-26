@@ -25,7 +25,7 @@ div class="row"
           br
           a href="#" id="copy_button" class="button" copy link
           br
-          a href="/delete_card/#{@card[:id]}" class="button" delete card
+          a href="/delete_card/#{@card[:id]}/#{@card[:bank_id]}" class="button" delete card
           br
         - when :none
       a href="/logout" class="button" log out
