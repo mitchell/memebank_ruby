@@ -5,20 +5,27 @@ require 'json'
 # Memebank application class
 class Memebank < Sinatra::Application
   enable :sessions
-  @@api_url = 'https://api.memebank.life' # rubocop:disable Style/ClassVars
+
+  not_found do
+    slim :not_found, layout: :application
+  end
 
   private
 
-  def retrieve_banks
-    @banks = RestClient.get "#{@@api_url}/banks",
-                            authorization: 'Authorization: Bearer ' \
-                            "#{session[:user_token]}"
-    @banks = JSON.parse @banks, symbolize_names: true
-  end
+  @@api_url = 'https://api.memebank.life' # rubocop:disable Style/ClassVars
 
   def retrieve_cards
     @cards = RestClient.get "#{@@api_url}/banks/#{@bank_id}/cards"
     @cards = JSON.parse @cards, symbolize_names: true
+  end
+
+  def check_session_retrieve_banks
+    @banks = RestClient.get "#{@@api_url}/banks",
+                            authorization: 'Authorization: Bearer ' \
+                            "#{session[:user_token]}"
+    @banks = JSON.parse @banks, symbolize_names: true
+  rescue RestClient::BadGateway
+    redirect to('/')
   end
 end
 

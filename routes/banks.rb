@@ -1,9 +1,7 @@
 # banks route controllers
 class Memebank < Sinatra::Application
   get '/home' do
-    redirect to('/') unless session[:user_token]
-
-    retrieve_banks
+    check_session_retrieve_banks
     @bank_id = @banks[0][:id]
     retrieve_cards
 
@@ -13,7 +11,7 @@ class Memebank < Sinatra::Application
   end
 
   get '/home/:id' do
-    retrieve_banks
+    check_session_retrieve_banks
     @bank_id = params[:id].to_i
     retrieve_cards
 
@@ -23,7 +21,7 @@ class Memebank < Sinatra::Application
   end
 
   get '/new' do
-    retrieve_banks
+    check_session_retrieve_banks
 
     slim :home, layout: :application, locals: { current_view: :none } do
       slim :edit, locals: { new_or_edit: 'new', bank_id_if: '' }
@@ -31,7 +29,7 @@ class Memebank < Sinatra::Application
   end
 
   get '/edit/:id' do
-    retrieve_banks
+    check_session_retrieve_banks
     @bank_id = params[:id].to_i
 
     slim :home, layout: :application, locals: { current_view: :none } do

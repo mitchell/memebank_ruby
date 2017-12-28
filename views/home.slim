@@ -21,7 +21,7 @@ div class="row"
           a href="/add_card/#{@bank_id}" class="button" add card
           br
         - when :card
-          textarea id="to_copy" rows="1" = @card[:src]
+          textarea id="to_copy" rows="1" style="width: 100%" = @card[:src]
           br
           button id="copy_button" copy link
           br
