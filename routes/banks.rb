@@ -37,6 +37,15 @@ class Memebank < Sinatra::Application
     end
   end
 
+  post '/new' do
+    @bank = RestClient.post "#{@@api_url}/banks",
+                            { bank: { title: params[:title] } },
+                            authorization: 'Authorization: ' \
+                                           "Bearer #{session[:user_token]}"
+    @bank = JSON.parse @bank, symbolize_names: true
+    redirect to("/home/#{@bank[:id]}")
+  end
+
   post '/edit/:id' do
     RestClient.put "#{@@api_url}/banks/#{params[:id]}",
                    { bank: { title: params[:title] } },
@@ -44,5 +53,20 @@ class Memebank < Sinatra::Application
                                   "Bearer #{session[:user_token]}"
 
     redirect to("/home/#{params[:id]}")
+  end
+
+  get '/delete/:id' do
+    check_session_retrieve_banks
+    @bank_id = params[:id].to_i
+    slim :home, layout: :application, locals: { current_view: :none } do
+      slim :delete
+    end
+  end
+
+  get '/delete_bank/:id' do
+    RestClient.delete "#{@@api_url}/banks/#{params[:id]}",
+                      authorization: 'Authorization: ' \
+                                     "Bearer #{session[:user_token]}"
+    redirect to('/home')
   end
 end

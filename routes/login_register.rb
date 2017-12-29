@@ -16,6 +16,18 @@ class Memebank < Sinatra::Application
     redirect to('/home')
   end
 
+  get '/register' do
+    slim :register, layout: :application
+  end
+
+  post '/register' do
+    RestClient.post "#{@@api_url}/users",
+                    user: { username: params[:username],
+                            email: params[:email],
+                            password: params[:password] }
+    redirect to('/')
+  end
+
   get '/logout' do
     session.delete :user_token
     redirect to('/')
