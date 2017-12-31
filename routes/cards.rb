@@ -13,7 +13,7 @@ class Memebank < Sinatra::Application
 
   get '/add_card/:bank_id' do
     check_session_retrieve_banks
-    @bank_id = params[:bank_id]
+    @bank_id = params[:bank_id].to_i
 
     slim :home, layout: :application, locals: { current_view: :none } do
       slim :add_card
