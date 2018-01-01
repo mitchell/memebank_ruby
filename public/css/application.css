@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
 body {
   font-family: 'Roboto', Helvetica Neue, Helvetica, sans-serif;
 }
@@ -33,6 +34,9 @@ body {
 #logo-item {
   margin-left: 1rem;
   color: white;
+  font-family: 'Raleway', sans-serif;
+  text-decoration: none;
+  font-weight: 600;
 }
 #bank-list-item { 
   padding: 1rem;
@@ -61,7 +65,7 @@ body {
   background-color: #33C3F0;
   border-bottom: 2px solid #BBB;
 }
-#logo-row h4 { margin-bottom: 1rem; }
+#logo-row h4 { margin-bottom: 0.5rem; }
 #edit-item {
   text-align: center;
   padding-top: 1rem;
