@@ -1,7 +1,7 @@
 div class="row"
   div class="grid"
     div class="grid-sizer"
-    - @cards.each do |card|
+    - @cards.reverse_each do |card|
       div class="grid-item"
         div class="bordered-item"
           a href="/card/#{card[:id]}"
